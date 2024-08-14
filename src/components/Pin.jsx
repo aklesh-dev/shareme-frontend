@@ -30,10 +30,10 @@ const Pin = ({ pin: { postedBy, _id, image, destination, save } }) => {
                 .setIfMissing({ save: [] })
                 .insert('after', 'save[-1]', [{
                     _key: uuidv4(),
-                    userId: user.googleID,
+                    userId: user?.googleID,
                     postedBy: {
                         _type: 'postedBy',
-                        _ref: user.googleID
+                        _ref: user?.googleID
                     }
                 }])
                 .commit()
@@ -52,8 +52,7 @@ const Pin = ({ pin: { postedBy, _id, image, destination, save } }) => {
             })
     };
 
-    // console.log('User GoogleID:', user?.googleID);
-    // console.log('Posted By ID:', postedBy?._id);
+    
 
     return (
         <section className="m-2">
